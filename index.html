@@ -15,7 +15,7 @@
 
 </head>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
 
@@ -1607,7 +1607,7 @@ $("#jscw_sd").val("34.1"); $("#jscw_5p").val("7.2");
 			<td style="width: 4.6136%; background-color: rgb(204, 204, 204);">17</td>
 			<td style="width: 71.5918%; background-color: rgb(204, 204, 204);">
 			(겹친 오각형 그림을 가리키며) 여기에 오각형이 겹쳐져 있는 그림이 있습니다. 이 그림을 아래 빈 곳에 그대로 그려보십시오.
-      <img src="./penta.jpg" align="center" width="70px" height="30">
+      <img src="./images/penta.jpg" align="center" width="70px" height="30">
 			</td>
 			<td style="width: 9.29186%; background-color: rgb(204, 204, 204);">
 			&nbsp;<input class="mmsechk_28" name="democheckbox" style="width:18px; height:18px;" type="checkbox" value="0" /> 0
@@ -2618,7 +2618,7 @@ function cdr_sum() {
 //           cdr_sum_b += Number($(this).val());
 //             });
     document.getElementById("cdr_sum_b").value = cdr_sum_b;
-    document.getElementById("cdr_summary").value = "M" + cdr_m + "O" + cdr_o +"J" + cdr_j +"C" + cdr_c +"H" + cdr_h + "P" + cdr_p;
+    document.getElementById("cdr_summary").value = "M" + cdr_m + "-O" + cdr_o +"-J" + cdr_j +"-C" + cdr_c +"-H" + cdr_h + "-P" + cdr_p;
 
 
    if (cdr_sum == null || cdr_sum == undefined || cdr_sum == NaN || cdr_sum == -Infinity || cdr_sum == Infinity || cdr_sum_b == null ||  cdr_sum_b == undefined || cdr_sum_b == NaN|| cdr_sum_b == -Infinity || cdr_sum_b == Infinity) {
@@ -2760,14 +2760,17 @@ function cdr_sum() {
  			<td align="center" style="width: 50%;"><input id="clock_name" style="text-align:center; border:none; font-size:13pt;" size="10" type="text" readonly="readonly"/></td>
  			<td align="center" style="width: 50%;"><input id="clock_id" style="text-align:center; border:none; font-size:13pt;" size="10" type="text" readonly="readonly"/></td>
  		</tr>
+    <tr style="width:500px; height:50px;">
+      <td colspan="2" align="center"><input type="file" id=file_input onchange="readURL(this)" accept=".jpg, .jpeg, .png, .gif, .bmp"></td>
+    </tr>
  		<tr align="center" style="width:500px;">
- 			<td colspan="2" align="center"><img id=clock_img src="./images/sample.jpg" width="500px"></td>
+ 			<td colspan="2" align="center"><img id=clock_img src="" width="500px"></td>
  		</tr>
+
  	</tbody>
  </table>
 
  <p align="center">
-   <button style="height:20pt;" onclick="img_put()"><strong style="font-size:14px;">확인</strong></button>&nbsp;
    <button style="height:20pt;" onclick="pdf_print()"><strong style="font-size:14px;">pdf저장</strong></button>&nbsp;
    <button style="height:20pt;" onclick="to_top()"><strong style="font-size:14px;">리셋</strong></button>
  </p>
@@ -2872,10 +2875,42 @@ function cdr_sum() {
 
 
 
-				function img_put() {
+/*
+        function img_put(event) {
+              var reader = new FileReader();
+              reader.onload = function (event) {
+               $("#clock_img").attr("src", event.target.result);
+             };
+                reader.readAsDataURL(event.target.files[0]);
+        }
+*/
+
+
+
+
+//          $("#file_input").on('change', function(){
+//                 readURL(this);
+//                });
+
+
+          function readURL(input) {
+               if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                   $("#clock_img").attr("src", e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+
+
+//				function img_put() {
 //     $("#clock_id").val("12345-12345");
-	   			$("#clock_img").attr("src","./images/" + $("#clock_id").val() + ".jpg").width("500px");
- 				}
+//	   			$("#clock_img").attr("src","./images/" + $("#clock_id").val() + ".jpg").width("500px");
+//            }
+// 				}
 
         function pdf_print() {
           window.print();
