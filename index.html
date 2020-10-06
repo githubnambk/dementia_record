@@ -2504,6 +2504,7 @@ function cdr_sum() {
 
                var max_index = c_array_obj.filter (function(el) {return el.leng == c_array_max; });
 
+               var c_array_3_index = c_array_obj.filter (function(el) {return el.leng == 3; });
                var c_array_2_index = c_array_obj.filter (function(el) {return el.leng == 2; });
                var c_array_1_index = c_array_obj.filter (function(el) {return el.leng == 1; });
                var c_array_0_index = c_array_obj.filter (function(el) {return el.leng == 0; });
@@ -2546,7 +2547,7 @@ function cdr_sum() {
                  else if (max_index[0].ind > cdr_m) {
                      if (c_array.includes(2) == true) {
                          if (c_array_2_index[0].ind < cdr_m) {cdr_sum = cdr_m;}
-                         else {cdr_sum = c_array_obj[1].ind;}
+                         else {cdr_sum = c_array_3_index[0].ind;}
                          }
                      else if (c_array.includes(2) == false && c_array_1_index[1].ind < cdr_m) {cdr_sum = cdr_m;}
                      else {cdr_sum = bigThanM[0].ind;}
@@ -2554,7 +2555,7 @@ function cdr_sum() {
                  else {
                      if (c_array.includes(2) == true) {
                          if (c_array_2_index[0].ind > cdr_m) {cdr_sum = cdr_m;}
-                         else {cdr_sum = c_array_obj[0].ind;}
+                         else {cdr_sum = c_array_3_index[0].ind;}
                          }
                      else if (c_array.includes(2) == false && c_array_1_index[0].ind > cdr_m) {cdr_sum = cdr_m;}
                      else {cdr_sum = smallThanM[2].ind;}
