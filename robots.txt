@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://githubnambk.github.io/dementia_record/sitemap.xml
